@@ -28,7 +28,6 @@ vim.o.scrolloff = 4
 vim.o.confirm = false
 
 -- Pasting
--- vim.keymap.set('n', 'p', '"_dP')
 vim.keymap.set('n', 'y', '"+y')
 vim.keymap.set('v', 'y', '"+y')
 vim.keymap.set('n', 'Y', '"+Y')
@@ -40,29 +39,31 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-vim.keymap.set('n', '<A-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<A-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<A-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<A-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<M-S-h>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Cycle Next buffer' })
+vim.keymap.set('n', '<M-S-l>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Cycle Next buffer' })
 
-vim.keymap.set('n', '<C-S-h>', '<C-w>H', { desc = 'Move window to the left' })
-vim.keymap.set('n', '<C-S-l>', '<C-w>L', { desc = 'Move window to the right' })
-vim.keymap.set('n', '<C-S-j>', '<C-w>J', { desc = 'Move window to the lower' })
-vim.keymap.set('n', '<C-S-k>', '<C-w>K', { desc = 'Move window to the upper' })
+vim.keymap.set('n', '<C-d>', 'mzyyp`zj', { desc = 'Duplicate line and stay on new line' })
+vim.keymap.set('n', '<M-d>', 'mzyyp`z', { desc = 'Duplicate line and stay on old line' })
 
+-- Move current line up/down
+vim.keymap.set('n', '<leader>j', ':m .+1<CR>==', { desc = 'Move line down' })
+vim.keymap.set('n', '<leader>k', ':m .-2<CR>==', { desc = 'Move line up' })
+
+-- stylua: ignore start
 vim.g.VM_default_mappings = 0
 vim.g.VM_maps = {
-  ['Add Cursor Down'] = '<C-j>',
-  ['Add Cursor Up'] = '<C-k>',
-  ['Find Under'] = '<C-n>',
+  ['Add Cursor Down']    = '<C-j>',
+  ['Add Cursor Up']      = '<C-k>',
+  ['Find Under']         = '<C-n>',
   ['Find Subword Under'] = '<C-n>',
-  ['Select Cursor Down'] = '<M-C-Down>',
-  ['Select Cursor Up'] = '<M-C-Up>',
-  ['Skip Region'] = 'q',
-  ['Remove Region'] = 'Q',
-  ['Surround'] = 'S',
-  ['Align'] = '\\a',
+  ['Select Cursor Down'] = '<M-C-F21>',
+  ['Select Cursor Up']   = '<M-C-F22>',
+  ['Skip Region']        = 'q',
+  ['Remove Region']      = 'Q',
+  ['Surround']           = 'S',
+  ['Align']              = '<leader>a',
 }
+-- stylua: ignore end
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
