@@ -49,6 +49,9 @@ vim.keymap.set('n', '<M-d>', 'mzyyp`z', { desc = 'Duplicate line and stay on old
 vim.keymap.set('n', '<leader>j', ':m .+1<CR>==', { desc = 'Move line down' })
 vim.keymap.set('n', '<leader>k', ':m .-2<CR>==', { desc = 'Move line up' })
 
+vim.keymap.set('n', '<M-w>', '<CMD>BufferLineCyclePrev<CR><CMD>BufferLineCloseRight<CR>', { desc = 'Close buffers' })
+vim.keymap.set('n', '<C-M-w>', '<CMD>BufferLineCloseOthers<CR>', { desc = 'Close other buffers' })
+
 -- stylua: ignore start
 vim.g.VM_default_mappings = 0
 vim.g.VM_maps = {
