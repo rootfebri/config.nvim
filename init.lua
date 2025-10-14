@@ -28,11 +28,9 @@ vim.o.scrolloff = 4
 vim.o.confirm = false
 
 -- Pasting
-vim.keymap.set('n', 'y', '"+y')
-vim.keymap.set('v', 'y', '"+y')
+vim.keymap.set({ 'n', 'v' }, 'y', '"+y')
+vim.keymap.set({ 'n', 'v' }, 'd', '"+d')
 vim.keymap.set('n', 'Y', '"+Y')
-vim.keymap.set('n', 'd', '"+d')
-vim.keymap.set('v', 'd', '"+d')
 vim.keymap.set('n', 'D', '"+D')
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -51,6 +49,7 @@ vim.keymap.set('n', '<leader>k', ':m .-2<CR>==', { desc = 'Move line up' })
 
 vim.keymap.set('n', '<M-w>', '<CMD>BufferLineCyclePrev<CR><CMD>BufferLineCloseRight<CR>', { desc = 'Close buffers' })
 vim.keymap.set('n', '<C-M-w>', '<CMD>BufferLineCloseOthers<CR>', { desc = 'Close other buffers' })
+-- vim.keymap.set({ 'n', 'i', 'v' }, '<C-e>', '<leader>sf', { desc = 'Open Search File' })
 
 -- stylua: ignore start
 vim.g.VM_default_mappings = 0
