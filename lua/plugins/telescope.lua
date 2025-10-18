@@ -38,8 +38,7 @@ return {
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set({ 'n', 'v', 'i' }, '<C-e>', builtin.oldfiles, { desc = '[S]earch Recent Files' })
-      vim.keymap.set({ 'n', 'v', 'i' }, '<C-E>', builtin.buffers, { desc = '[S]earch Recent Files' })
+      vim.keymap.set({ 'n', 'v', 'i' }, '<C-e>', builtin.find_files, { desc = 'Search Recent Files' })
 
       vim.keymap.set('n', '<leader>/', function()
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {

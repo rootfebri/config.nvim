@@ -14,20 +14,32 @@ return {
       },
     },
     opts = {
-      notify_on_error = false,
-      format_on_save = function(bufnr)
-        local disable_filetypes = { c = true, cpp = true }
-        if disable_filetypes[vim.bo[bufnr].filetype] then
-          return nil
-        else
-          return {
-            timeout_ms = 500,
-            lsp_format = 'fallback',
-          }
-        end
-      end,
+      notify_on_error = true,
+      format_on_save = {
+        timeout_ms = 1000,
+        lsp_format = 'fallback',
+        async = true,
+      },
       formatters_by_ft = {
+        rust = { 'rustfmt', lsp_format = 'fallback' },
+        php = { 'pint' },
         lua = { 'stylua' },
+        javascript = { 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettier', stop_after_first = true },
+        typescript = { 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettier', stop_after_first = true },
+        json = { 'prettier' },
+        graphql = { 'prettier', stop_after_first = true },
+      },
+      ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
+      formatters = {
+        ['pint'] = {
+          command = 'pint',
+          args = function(_, ctx)
+            return { '--stdin-filename=' .. ctx.filename }
+          end,
+          stdin = true,
+        },
       },
     },
   },

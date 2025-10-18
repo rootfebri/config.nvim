@@ -132,7 +132,7 @@ return {
             hide = { 'q', '<esc>' },
             open_url = { '<cr>' },
             select = { '<cr>' },
-            select_alt = { 's' },
+            select_alt = { '<C-s>' },
             toggle_feature = { '<cr>' },
             copy_value = { 'yy' },
             goto_item = { 'gd', 'K', '<C-LeftMouse>' },

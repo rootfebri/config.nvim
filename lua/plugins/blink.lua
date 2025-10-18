@@ -23,12 +23,13 @@ return {
     opts = {
       keymap = {
         preset = 'super-tab',
+        ['<C-CR>'] = { 'accept', 'fallback' },
       },
       appearance = {
         nerd_font_variant = 'mono',
       },
       completion = {
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = true, auto_show_delay_ms = 100 },
       },
 
       sources = {
@@ -40,7 +41,7 @@ return {
 
       snippets = { preset = 'luasnip' },
 
-      fuzzy = { implementation = 'prefer_rust_with_warning' },
+      fuzzy = { implementation = 'rust' },
 
       signature = { enabled = true },
     },
