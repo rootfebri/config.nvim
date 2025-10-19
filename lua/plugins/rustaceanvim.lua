@@ -7,8 +7,9 @@ return {
       'config',
       {
         checkOnSave = {
-          command = 'clippy',
+          command = 'cargo',
           allTargets = true,
+          arg = '--all',
         },
         procMacro = {
           enable = true,

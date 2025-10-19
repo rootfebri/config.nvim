@@ -15,11 +15,28 @@ return {
     },
     opts = {
       notify_on_error = true,
-      format_on_save = {
-        timeout_ms = 1000,
-        lsp_format = 'fallback',
-        async = true,
-      },
+      format_on_save = function()
+        if vim.fn.has 'win32' == 0 then
+          return {
+            timeout_ms = 1000,
+            lsp_format = 'fallback',
+            async = true,
+          }
+        else
+          return {}
+        end
+      end,
+      format_after_saved = function()
+        if vim.fn.has 'win32' == 1 then
+          return {}
+        else
+          return {
+            timeout_ms = 1000,
+            lsp_format = 'fallback',
+            async = true,
+          }
+        end
+      end,
       formatters_by_ft = {
         rust = { 'rustfmt', lsp_format = 'fallback' },
         php = { 'pint' },
