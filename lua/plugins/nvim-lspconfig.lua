@@ -113,7 +113,6 @@ return {
       local servers = {
 
         lua_ls = {
-
           settings = {
             Lua = {
               completion = {
@@ -121,6 +120,16 @@ return {
               },
             },
           },
+        },
+        ['rust-analyzer'] = {
+          check = {
+            command = 'clippy',
+            extraArgs = { '--all-targets --all-features --no-deps' },
+          },
+          -- checkOnSave = true,
+          -- files = {
+          --   watcher = 'server',
+          -- },
         },
       }
 
