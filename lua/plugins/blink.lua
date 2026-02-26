@@ -23,13 +23,13 @@ return {
     opts = {
       keymap = {
         preset = 'super-tab',
-        ['<C-CR>'] = { 'accept', 'fallback' },
+        -- ['<C-CR>'] = { 'accept', 'fallback' },
       },
       appearance = {
         nerd_font_variant = 'mono',
       },
       completion = {
-        documentation = { auto_show = true, auto_show_delay_ms = 100 },
+        documentation = { auto_show = true, auto_show_delay_ms = 260 },
       },
 
       sources = {
