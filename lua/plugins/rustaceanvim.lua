@@ -1,20 +1,37 @@
+local config = {
+  checkOnSave = true,
+  procMacro = {
+    enable = true,
+  },
+  cargo = {
+    allTargets = true,
+    features = 'all',
+    extraArgs = { '--no-deps' },
+  },
+  check = {
+    allTargets = true,
+    features = 'all',
+    command = 'clippy',
+  },
+}
+
 return {
   'rootfebri/rustaceanvim',
   version = '^6',
   lazy = false,
-  config = function()
-    vim.cmd.RustAnalyzer {
-      'config',
-      {
-        checkOnSave = {
-          command = 'clippy',
-          allTargets = true,
-          allFeatures = true,
-        },
-        procMacro = {
-          enable = true,
-        },
+  ['rust-analyzer'] = config,
+  rust_analyzer = config,
+  config = {
+    ['rust-analyzer'] = {
+      cargo = {
+        allTargets = true,
+        features = 'all',
       },
-    }
-  end,
+      check = {
+        command = 'clippy',
+        extraArgs = { '--no-deps' },
+      },
+      checkOnSave = true,
+    },
+  },
 }

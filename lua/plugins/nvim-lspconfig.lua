@@ -121,16 +121,6 @@ return {
             },
           },
         },
-        ['rust-analyzer'] = {
-          check = {
-            command = 'clippy',
-            extraArgs = { '--all-targets --all-features --no-deps' },
-          },
-          -- checkOnSave = true,
-          -- files = {
-          --   watcher = 'server',
-          -- },
-        },
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})

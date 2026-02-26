@@ -43,8 +43,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-vim.keymap.set('n', '<M-S-h>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Cycle Next buffer' })
-vim.keymap.set('n', '<M-S-l>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Cycle Next buffer' })
+vim.keymap.set('n', '<C-h>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Cycle Prev buffer' })
+vim.keymap.set('n', '<C-l>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Cycle Next buffer' })
 
 vim.keymap.set('n', '<C-d>', 'mzyyp`zj', { desc = 'Duplicate line and stay on new line' })
 vim.keymap.set('n', '<M-d>', 'mzyyp`z', { desc = 'Duplicate line and stay on old line' })
@@ -92,6 +92,23 @@ end
 ---@type vim.Option
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
+vim.g.rustaceanvim = {
+  server = {
+    default_settings = {
+      ['rust-analyzer'] = {
+        cargo = {
+          allTargets = true,
+          features = 'all',
+        },
+        check = {
+          command = 'clippy',
+          extraArgs = { '--no-deps' },
+        },
+        checkOnSave = true,
+      },
+    },
+  },
+}
 
 require('lazy').setup({
   'NMAC427/guess-indent.nvim',
@@ -121,3 +138,16 @@ require('lazy').setup({
     },
   },
 })
+
+require('tokyonight').setup {
+  transparent = true, -- Enable general transparency
+  styles = {
+    sidebars = 'transparent', -- Make sidebars transparent
+    floats = 'transparent', -- Make floating windows transparent
+  },
+  -- You can also use on_highlights to make specific elements transparent if needed
+  -- on_highlights = function(hl, c)
+  --   hl.TelescopeNormal = { fg = c.fg_dark, bg = "none" } -- Example for Telescope
+  -- end,
+}
+vim.cmd 'colorscheme tokyonight'
