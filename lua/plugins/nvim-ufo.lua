@@ -11,11 +11,10 @@ return {
       local expandAllFolds = require('ufo').openAllFolds
       local collapseAllFolds = require('ufo').closeAllFolds
 
-      vim.keymap.set('n', '<M-S-e>', expandAllFolds)
-      vim.keymap.set('n', '<M-S-q>', collapseAllFolds)
-
-      vim.keymap.set('n', '<M-q>', 'za')
-      vim.keymap.set('n', '<M-e>', 'za')
+      vim.keymap.set('n', '<C-S-+>', collapseAllFolds)
+      vim.keymap.set('n', '<C-S-_>', expandAllFolds)
+      vim.keymap.set('n', '<C-S-q>', 'za')
+      vim.keymap.set('n', '<C-S-e>', 'za')
 
       vim.keymap.set('n', '<M-k>', function()
         local winid = require('ufo').peekFoldedLinesUnderCursor()

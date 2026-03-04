@@ -92,23 +92,23 @@ end
 ---@type vim.Option
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
-vim.g.rustaceanvim = {
-  server = {
-    default_settings = {
-      ['rust-analyzer'] = {
-        cargo = {
-          allTargets = true,
-          features = 'all',
-        },
-        check = {
-          command = 'clippy',
-          extraArgs = { '--no-deps' },
-        },
-        checkOnSave = true,
-      },
-    },
-  },
-}
+-- vim.g.rustaceanvim = {
+--   server = {
+--     default_settings = {
+--       ['rust-analyzer'] = {
+--         cargo = {
+--           allTargets = true,
+--           features = 'all',
+--         },
+--         check = {
+--           command = 'clippy',
+--           extraArgs = { '--no-deps' },
+--         },
+--         checkOnSave = true,
+--       },
+--     },
+--   },
+-- }
 
 require('lazy').setup({
   'NMAC427/guess-indent.nvim',
