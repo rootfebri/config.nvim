@@ -1,4 +1,5 @@
-local config = {
+return {
+  {
   'stevearc/conform.nvim',
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
@@ -6,35 +7,18 @@ local config = {
     {
       '<leader>f',
       function()
-        require('conform').format { async = true, lsp_format = 'fallback' }
+        require('conform').format { lsp_format = 'fallback', timeout_ms = 500 }
       end,
-      mode = '',
+      mode = { 'n', 'v' },
       desc = '[F]ormat buffer',
     },
   },
   opts = {
-    format_on_save = function()
-      if vim.fn.has 'win32' == 0 then
-        return {
-          timeout_ms = 1000,
-          lsp_format = 'fallback',
-          async = true,
-        }
-      else
-        return {}
-      end
-    end,
-    format_after_save = function()
-      if vim.fn.has 'win32' == 1 then
-        return {}
-      else
-        return {
-          timeout_ms = 1000,
-          lsp_format = 'fallback',
-          async = true,
-        }
-      end
-    end,
+    log_level = vim.log.levels.DEBUG,
+    format_on_save = {
+      timeout_ms = 500,
+      lsp_format = 'fallback',
+    },
     formatters_by_ft = {
       rust = { 'rustfmt', lsp_format = 'fallback' },
       php = { 'pint' },
@@ -55,22 +39,12 @@ local config = {
         end,
         stdin = true,
       },
+      ['shfmt'] = {
+        inherit = false,
+        command = 'shfmt',
+        args = { '-filename', '$FILENAME', '-i', '2' },
+      },
     },
   },
+  },
 }
-
-if vim.fn.has 'win32' == 0 then
-  config.opts.format_on_save = {
-    timeout_ms = 1000,
-    lsp_format = 'fallback',
-    async = true,
-  }
-else
-  config.opts.format_after_save = {
-    timeout_ms = 1000,
-    lsp_format = 'fallback',
-    async = true,
-  }
-end
-
-return config

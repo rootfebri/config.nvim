@@ -5,7 +5,6 @@ vim.g.have_nerd_font = true
 vim.diagnostic.config {
   virtual_lines = true,
 }
-
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.mouse = 'a'
@@ -138,17 +137,3 @@ require('lazy').setup({
     },
   },
 })
-
-require('tokyonight').setup {
-  transparent = true, -- Enable general transparency
-  styles = {
-    sidebars = 'transparent', -- Make sidebars transparent
-    floats = 'transparent', -- Make floating windows transparent
-  },
-  -- You can also use on_highlights to make specific elements transparent if needed
-  -- on_highlights = function(hl, c)
-  --   hl.TelescopeNormal = { fg = c.fg_dark, bg = "none" } -- Example for Telescope
-  -- end,
-}
-vim.cmd 'colorscheme tokyonight'
-

@@ -23,6 +23,7 @@ return {
     opts = {
       keymap = {
         preset = 'super-tab',
+        ['<C-space>'] = { 'show', 'fallback' },
         -- ['<C-CR>'] = { 'accept', 'fallback' },
       },
       appearance = {
@@ -30,6 +31,10 @@ return {
       },
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 260 },
+        trigger = {
+          show_in_snippet = false,
+          show_on_insert = false,
+        },
       },
 
       sources = {
@@ -40,9 +45,7 @@ return {
       },
 
       snippets = { preset = 'luasnip' },
-
       fuzzy = { implementation = 'rust' },
-
       signature = { enabled = true },
     },
   },
