@@ -2,9 +2,6 @@ vim.g.rust_recommended_style = 0
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
-vim.diagnostic.config {
-  virtual_lines = true,
-}
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.mouse = 'a'
@@ -27,10 +24,10 @@ vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.o.inccommand = 'split'
 vim.o.cursorline = true
-vim.o.scrolloff = 4
+vim.o.scrolloff = 2
 vim.o.confirm = false
 vim.o.wrap = true
-vim.o.wrapmargin = 4
+vim.o.wrapmargin = 2
 
 -- Pasting
 vim.keymap.set({ 'n', 'v' }, 'y', '"+y')
@@ -108,6 +105,12 @@ rtp:prepend(lazypath)
 --     },
 --   },
 -- }
+
+vim.filetype.add {
+  extension = {
+    rhai = 'rust',
+  },
+}
 
 require('lazy').setup({
   'NMAC427/guess-indent.nvim',
