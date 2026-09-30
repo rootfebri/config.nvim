@@ -106,12 +106,6 @@ rtp:prepend(lazypath)
 --   },
 -- }
 
-vim.filetype.add {
-  extension = {
-    rhai = 'rust',
-  },
-}
-
 require('lazy').setup({
   'NMAC427/guess-indent.nvim',
   require 'kickstart.plugins.debug',
